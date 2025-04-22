@@ -1,5 +1,8 @@
 name: "CodeQL"
 
+with:
+  languages: javascript, typescript
+
 on:
   push:
     branches: [main]
@@ -20,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'python' ] # Update based on your project language(s)
+        language: [ 'javascript', 'python' , 'typescript' ] # Update based on your project language(s)
 
     steps:
     - name: Checkout repository
