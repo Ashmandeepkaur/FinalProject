@@ -1,29 +1,22 @@
 name: "CodeQL"
 
-with:
-  languages: javascript, typescript
-
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
   schedule:
-    - cron: '0 0 * * 0' # Weekly scan
+    - cron: '0 0 * * 0'
 
 jobs:
   analyze:
-    name: Analyze CodeQL
+    name: Analyze
     runs-on: ubuntu-latest
+
     permissions:
       actions: read
       contents: read
       security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript', 'python' , 'typescript' ] # Update based on your project language(s)
 
     steps:
     - name: Checkout repository
@@ -32,7 +25,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
+        languages: javascript  # or `javascript,typescript`
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
